@@ -16,7 +16,7 @@ public class Arrays {
      * 无参数的构造函数，默认数组的容量capacity为10
      */
     public Arrays(){
-        this(10);//默认数组容量为10
+        this(10);
     }
 
     /**
