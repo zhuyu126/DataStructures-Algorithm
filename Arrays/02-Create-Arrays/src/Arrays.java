@@ -69,4 +69,43 @@ public class Arrays {
         data[index]=e;
         size++;
     }
+
+    /**
+     * 获取index 索引位置的元素
+     * @param index 索引
+     * @return 元素
+     */
+    int get(int index){
+        if(index<0||index>=size){
+            throw new IllegalArgumentException("Get failed.Index is illegal");
+        }
+        return data[index];
+    }
+
+    /**
+     * 修改index索引位置的元素e
+     * @param index 索引位置
+     * @param e 修改值
+     */
+    void set(int index,int e){
+        if(index<0||index>=size){
+            throw new IllegalArgumentException("Get failed.Index is illegal");
+        }
+        data[index]=e;
+    }
+
+    @Override
+    public String toString(){
+        StringBuilder res=new StringBuilder();
+        res.append(String.format("Arrays:size=%d,capacity=%d\n",size,data.length));
+        res.append('[');
+        for(int i=0;i<size;i++){
+            res.append(data[i]);
+            if(i!=size-1){
+                res.append(",");
+            }
+        }
+        res.append(']');
+        return res.toString();
+    }
 }
