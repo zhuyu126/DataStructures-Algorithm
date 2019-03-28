@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        Arrays arr=new Arrays(20);
+        Arrays<Integer> arr=new Arrays<>(20);
         for(int i=0;i<10;i++){
             arr.addLast(i);
         }
@@ -20,5 +20,6 @@ public class Main {
 
         arr.removeFirst();
         System.out.println(arr);
+
     }
 }
