@@ -140,7 +140,7 @@ public class Arrays<E> {
         }
         size--;
         data[size]=null;//loitering objects!=memory leak
-        if(size==data.length/2){
+        if(size==data.length /4 &&data.length/2!=0){//使用Lazy方式解决复杂度震荡
             resize(data.length/2);
         }
         return ret;
