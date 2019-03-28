@@ -49,7 +49,7 @@ public class Arrays {
     }
     //向所有元素前添加一个新元素
     public void addFirst(int e){
-        add(size,e);
+        add(0,e);
     }
 
     /**
@@ -94,6 +94,76 @@ public class Arrays {
         data[index]=e;
     }
 
+    /**
+     * 查找数组中是否有元素e
+     * @param e 查找元素
+     * @return
+     */
+    public boolean contanins(int e){
+        for(int i=0;i<size;i++){
+            if(data[i]==e){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 查找数组元素e所在的索引，如果不存在元素e 返回-1
+     * @param e 查找元素e
+     * @return 如果不存在元素e 返回-1,否则返回索引
+     */
+    public int find(int e){
+        for(int i=0;i<size;i++){
+            if(data[i]==e){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * 删除元素
+     * @param index 索引
+     * @return 删除元素
+     */
+    public int remove (int index){
+        if(index<0||index>=size){
+            throw new IllegalArgumentException("Get failed.Index is illegal");
+        }
+        int ret=data[index];
+//        for( ;index<size;index++){
+//            data[index]=data[index+1];
+//        }
+        for(int i=index+1;i<size;i++){
+            data[i-1]=data[i];
+        }
+        size--;
+        return ret;
+    }
+
+    /**
+     * 删除第一个元素
+     * @return 删除元素
+     */
+    public int removeFirst(){
+        return remove(0);
+    }
+
+    /**
+     * 删除最后一个元素
+     * @return 删除元素
+     */
+    public int removeLast(){
+        return remove(size-1);
+    }
+
+    public void removeElement(int e){
+        int index=find(e);
+        if(index!=-1){
+            remove(index);
+        }
+    }
     @Override
     public String toString(){
         StringBuilder res=new StringBuilder();
