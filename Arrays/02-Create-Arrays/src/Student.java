@@ -12,6 +12,9 @@ public class Student {
         return String.format("Student(name:%s,score:%d)",name,score);
     }
 
+    /**
+     * 验证自定义类型
+     */
     public static void main(String[] args) {
         Arrays<Student> array=new Arrays<>();
         array.addLast(new Student("Alice",100));
