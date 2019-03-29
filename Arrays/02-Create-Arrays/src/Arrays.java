@@ -41,24 +41,25 @@ public class Arrays<E> {
     }
 
     /**
-     * 向所有元素后添加一个新元素
+     * 向所有元素后添加一个新元素 时间复杂度则变为O(n)
      * @param e
      */
     public void addLast(E e){
         add(size,e);
     }
-    //向所有元素前添加一个新元素
+    //向所有元素前添加一个新元素 时间复杂度则变为O(n)
     public void addFirst(E e){
         add(0,e);
     }
 
     /**
-     * 在第index个位置插入一个新元素
+     * 在第index个位置插入一个新元素 时间复杂度则变为O(n)
      * @param index 插入位置
      * @param e 插入元素
      */
     public void add(int index,E e){
         if(size==data.length){//动态数组
+            // throw new IllegalArgumentException("Add failed. Array is full");
             resize(2*data.length);
         }else if(index<0||size<index){
             throw new IllegalArgumentException("Add failed. Require index >= 0 and index <= size.");
@@ -71,7 +72,7 @@ public class Arrays<E> {
     }
 
     /**
-     * 获取index 索引位置的元素
+     * 获取index 索引位置的元素 时间复杂度则变为O(n)
      * @param index 索引
      * @return 元素
      */
@@ -83,7 +84,7 @@ public class Arrays<E> {
     }
 
     /**
-     * 修改index索引位置的元素e
+     * 修改index索引位置的元素e 时间复杂度则变为O(n)
      * @param index 索引位置
      * @param e 修改值
      */
@@ -109,7 +110,7 @@ public class Arrays<E> {
     }
 
     /**
-     * 查找数组元素e所在的索引，如果不存在元素e 返回-1
+     * 查找数组元素e所在的索引，如果不存在元素e 返回-1 时间复杂度则变为O(n)
      * @param e 查找元素e
      * @return 如果不存在元素e 返回-1,否则返回索引
      */
@@ -123,7 +124,7 @@ public class Arrays<E> {
     }
 
     /**
-     * 删除元素
+     * 删除元素 时间复杂度则变为O(n)
      * @param index 索引
      * @return 删除元素
      */
@@ -147,7 +148,7 @@ public class Arrays<E> {
     }
 
     /**
-     * 删除第一个元素
+     * 删除第一个元素 时间复杂度则变为O(n)
      * @return 删除元素
      */
     public E removeFirst(){
@@ -155,13 +156,17 @@ public class Arrays<E> {
     }
 
     /**
-     * 删除最后一个元素
+     * 删除最后一个元素 时间复杂度则变为O(n)
      * @return 删除元素
      */
     public E removeLast(){
         return remove(size-1);
     }
 
+    /**
+     * 删除指定一个元素 时间复杂度则变为O(n)
+     * @param e
+     */
     public void removeElement(E e){
         int index=find(e);
         if(index!=-1){
@@ -184,7 +189,7 @@ public class Arrays<E> {
     }
 
     /**
-     * 动态数组扩容
+     * 动态数组扩容 时间复杂度则变为O(n)
      * @param newCapacity 扩容大小
      */
     private void resize(int newCapacity){
