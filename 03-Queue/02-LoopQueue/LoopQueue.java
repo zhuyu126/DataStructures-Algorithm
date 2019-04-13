@@ -1,4 +1,3 @@
-import java.util.Arrays;
 
 public class LoopQueue<E> implements Queue<E> {
 
