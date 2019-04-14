@@ -1,5 +1,5 @@
 
-public class LoopQueue<E> implements Queue1<E> {
+public class LoopQueue<E> implements Queue<E> {
 
     private int front;
     private int tail;
