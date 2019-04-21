@@ -1,4 +1,4 @@
-public interface Queue<E> {
+public interface Queue2<E> {
     void enqueue(E e);//入队
     E dequeue();//出队
     E getFront();//队首元素
