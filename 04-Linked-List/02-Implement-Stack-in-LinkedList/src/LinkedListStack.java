@@ -1,3 +1,9 @@
+/**
+ * 对于数组实现，仅仅在数组末尾进行插入和删除操作，开销为O（1），而在数组下标0处插入和删除开销为O（n）。
+ * 相反的是，对于链表，在链表头插入和删除元素，开销为O（1），链表尾插入删除开销则为O（n）。
+ * 若链表维护一个尾节点，则在链表尾插入新元素的开销也可以下降至O(1)。
+ * @param <E>
+ */
 public class LinkedListStack<E>implements Stack<E> {
 
     private LinkedList<E>list;

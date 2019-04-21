@@ -1,5 +1,6 @@
 /**
  * 带尾节点实现的链表队列
+ * 其时间复杂度与循环链表LoopQueue相同
  * @param <E>
  */
 public class LinkedListQueue<E> implements Queue2<E> {
