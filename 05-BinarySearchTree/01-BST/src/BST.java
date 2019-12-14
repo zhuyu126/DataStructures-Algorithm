@@ -40,7 +40,6 @@ public class BST<E extends Comparable<E>> {
 
     /**
      * 得到存储元素的个数即大小
-     * @return
      */
     public int getSize() {
         return size;
