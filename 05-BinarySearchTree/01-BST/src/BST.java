@@ -52,43 +52,7 @@ public class BST<E extends Comparable<E>> {
     public boolean isEmpty(){
         return size==0;
     }
-//    /**添加新元素e*/
-//    public void add(E e){
-//        if(root==null){
-//            root=new Node(e);
-//            size++;
-//        }
-//        else {
-//            add(root,e);
-//        }
-//    }
-//
-//    /**
-//     * 在根节点为node的二叉树添加新元素e 递归算法
-//     */
-//    private void add(Node node,E e){
-//        if(node.e.equals(e)){
-//            return;
-//        }
-//        if (e.compareTo(node.e)>0&&node.right==null){
-//            node.right=new Node(e);
-//            size++;
-//            return;
-//        }else if(e.compareTo(node.e)<0&&node.left==null){
-//            node.left=new Node(e);
-//            size++;
-//            return;
-//        }else if(e.compareTo(node.e)>0){
-//            add(node.right,e);
-//        }else if (e.compareTo(node.e)<0){
-//            add(node.left,e);
-//        }
-//
-//    }
 
-    /**
-     * 改进方法
-     */
     /**添加新元素e*/
     public void add(E e){
         root=add(root,e);
@@ -112,6 +76,33 @@ public class BST<E extends Comparable<E>> {
             node.left=add(node.left,e);
         }
         return node;
+    }
+
+    /**
+     * 二叉树中是否含有元素E
+     * @param e 查找元素
+     * @return
+     */
+    public boolean contains(E e){
+        return contains(root,e);
+    }
+
+    /**
+     * 以node为根节点查找是否含有元素e 递归实现
+     * @param node 节点
+     * @param e 查找元素
+     * @return true/false
+     */
+    private boolean contains(Node node,E e){
+        if(node==null){
+            return false;
+        }
+        if(e.compareTo(node.e)>0){
+            return contains(node.right,e);
+        }else if (e.compareTo( node.e)<0){
+            return contains(node.left,e);
+        }
+        return true;
     }
 
 }
