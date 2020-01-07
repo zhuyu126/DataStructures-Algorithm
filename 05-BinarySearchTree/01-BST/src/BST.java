@@ -149,7 +149,7 @@ public class BST<E extends Comparable<E>> {
 
     /**
      * 后序遍历：右->左->根
-     * 运用：
+     * 运用：内存释放
      */
     public void postOrder(){
         postOrder(root);
