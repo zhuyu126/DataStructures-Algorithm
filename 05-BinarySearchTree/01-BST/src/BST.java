@@ -105,4 +105,100 @@ public class BST<E extends Comparable<E>> {
         return true;
     }
 
+    /**
+     * 前序遍历递归实现
+     * 前序遍历：根—>左—>右
+     */
+    public void preOrder(){
+        preOrder(root);
+    }
+
+    /**
+     * 以node为根的前序遍历,递归实现
+     * @param node
+     */
+    private void preOrder(Node node){
+        if (node==null){
+            return;
+        }
+        System.out.println(node.e);
+        preOrder(node.left);
+        preOrder(node.right);
+    }
+
+    /**
+     * 中序遍历:左->根->右
+     */
+    public void inOrder(){
+        inOrder(root);
+    }
+
+    /**
+     * 以node为根的中序遍历, 递归算法
+     * @param node
+     */
+    private void inOrder(Node node){
+        if (node==null){
+            return;
+        }
+        inOrder(node.left);
+        System.out.println(node.e);
+        inOrder(node.right);
+    }
+
+    /**
+     * 后序遍历：右->左->根
+     */
+    public void postOrder(){
+        postOrder(root);
+    }
+
+    /**
+     * 以node为根的后序遍历, 递归算法
+     * @param node
+     */
+    private void postOrder(Node node){
+        if (node==null){
+            return;
+        }
+        postOrder(node.left);
+        postOrder(node.right);
+        System.out.println(node.e);
+    }
+
+    /**
+     * 打印输出BST
+     * @return
+     */
+    @Override
+    public String toString() {
+        StringBuilder res=new StringBuilder();
+        generateBSTString(root,0,res);
+        return res.toString();
+    }
+
+    /**
+     * 以前序遍历的方法
+     * 生成以node为根节点，深度为depth的描述二叉树的字符串
+     * @param node 节点
+     * @param depth 深度(层次)
+     * @param res 结果
+     */
+    private void generateBSTString(Node node, int depth, StringBuilder res) {
+        if(node==null){
+            res.append(generateDepthString(depth) + "null\n");
+            return;
+        }
+        res.append(generateDepthString(depth)+node.e+"\n");
+        generateBSTString(node.left,depth+1,res);
+        generateBSTString(node.right,depth+1,res);
+
+    }
+    private String generateDepthString(int depth){
+        StringBuilder res=new StringBuilder();
+        for(int i=0;i<depth;i++){
+            res.append("-");
+        }
+        return res.toString();
+    }
 }
