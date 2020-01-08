@@ -106,7 +106,7 @@ public class BST<E extends Comparable<E>> {
     }
 
     /**
-     * 前序遍历递归实现
+     * 前序遍历递归实现 属于DFS深度优先遍历
      * 前序遍历：根—>左—>右
      */
     public void preOrder(){
@@ -127,7 +127,7 @@ public class BST<E extends Comparable<E>> {
     }
 
     /**
-     * 中序遍历:左->根->右
+     * 中序遍历:左->根->右 属于DFS深度优先遍历
      * 结果是顺序的
      */
     public void inOrder(){
@@ -148,7 +148,7 @@ public class BST<E extends Comparable<E>> {
     }
 
     /**
-     * 后序遍历：右->左->根
+     * 后序遍历：右->左->根 属于DFS深度优先遍历
      * 运用：内存释放
      */
     public void postOrder(){
