@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 /**
  * 二叉树具有天然的递归结构
  *    每个节点的左子树也是二叉树
@@ -166,6 +168,88 @@ public class BST<E extends Comparable<E>> {
         postOrder(node.left);
         postOrder(node.right);
         System.out.println(node.e);
+    }
+
+    /**
+     * 非递归前序遍历
+     * 可以借助栈来访问节点 利用栈 后进先出 的特性 将父节点保存到栈中，出栈时的节点优先为子节点
+     * 根节点首先入栈和出栈然后再执行子树的操作
+     * 入栈按照先入栈右子树再入左子树
+     */
+    public void preOrderNR(){
+        if(root==null){
+            return;
+        }
+        Stack<Node> stack=new Stack<>();
+        stack.push(root);
+        while(!stack.isEmpty()){
+            Node tempNode=stack.pop();
+            System.out.println(tempNode.e);
+            if (tempNode.right!=null){
+                stack.push(tempNode.right);
+            }
+            if (tempNode.left!=null){
+                stack.push(tempNode.left);
+            }
+        }
+    }
+
+    /**
+     * 非递归中序遍历
+     * 分析:
+     * 判断该节点是否存在或栈已经为空，若该节点存在则该节点入栈
+     *  步骤1：判断该节点是否有左子树，节点如果有左叶子节点，该节点入栈，
+     *      如果该节点没有左叶子节点，访问该节点
+     *  步骤2：判断该节点是否有右子树，如果节点有右叶子节点，重复步骤1
+     *      如果节点没有右叶子节点（说明访问完毕）回退，让栈顶元素出栈，并且访问栈顶元素的右叶子树，重复步骤1
+     *  步骤3：当栈为空时，遍历结束
+     */
+    public void inOrderNR(){
+        if(root==null){
+            return;
+        }
+        Stack<Node>stack=new Stack<>();
+        Node cur=root;
+        // 判断 当前节点 是否为空，并且 栈是否遍历完结
+        while (cur!=null||!stack.empty()){
+            if (cur!=null){
+                stack.push(cur);
+                cur=cur.left;
+            }else {
+                cur=stack.pop();
+                System.out.println(cur.e);
+                cur=cur.right;
+            }
+        }
+    }
+
+    /**
+     * 非递归后序遍历
+     * 采用两个栈来模拟
+     * 需要注意的是：节点的所有右孩子节点访问完毕后，该节点才可以出栈
+     * 通过debug来加深理解
+     */
+    public void  postOrderNR(){
+        if (root==null){
+            return;
+        }
+        Stack<Node>stack=new Stack<>();
+        Stack<Node>outstack=new Stack<>();
+
+        stack.push(root);
+        while (!stack.empty()){
+            Node cur=stack.pop();
+            outstack.push(cur);
+            if(cur.left!=null){
+                stack.push(cur.left);
+            }
+            if(cur.right!=null){
+                stack.push(cur.right);
+            }
+        }
+        while (!outstack.empty()){
+            System.out.println(outstack.pop().e);
+        }
     }
 
     /**
