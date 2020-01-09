@@ -24,5 +24,7 @@ public class Mains {
         bst.postOrderNR();
         System.out.println();
         bst.levelOrder();
+        System.out.println(bst.maxmun());
+        System.out.println(bst.minimum());
     }
 }
