@@ -4,7 +4,8 @@
 public class Mains {
     public static void main(String[] args) {
         BST<Integer> bst=new BST<>();
-        int[] nums={5,3,7,9,4,2,};
+        int[] nums={5,3,7,9,4,2};
+//        int[] nums={41,22,15,13,33,37,58,50,42,53};
         for(int num:nums){
             bst.add(num);
         }
@@ -26,5 +27,7 @@ public class Mains {
         bst.levelOrder();
         System.out.println(bst.maxmun());
         System.out.println(bst.minimum());
+        bst.removeMin();
+        System.out.println(bst);
     }
 }
