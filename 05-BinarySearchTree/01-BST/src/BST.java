@@ -259,6 +259,7 @@ public class BST<E extends Comparable<E>> {
      * 遍历顺序根->左孩子->右孩子
      * 层次遍历是一个线性的遍历过程
      * 采用队列来进行遍历（队列先进先出）从左到右入队
+     * BFS 的意义：更快的找到问题的解；常用于求解最短路径
      */
     public void levelOrder(){
         if(root==null){
