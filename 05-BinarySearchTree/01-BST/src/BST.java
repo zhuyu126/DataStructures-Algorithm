@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -249,6 +251,30 @@ public class BST<E extends Comparable<E>> {
         }
         while (!outstack.empty()){
             System.out.println(outstack.pop().e);
+        }
+    }
+
+    /**
+     * 二分搜索树的层次遍历BFS
+     * 遍历顺序根->左孩子->右孩子
+     * 层次遍历是一个线性的遍历过程
+     * 采用队列来进行遍历（队列先进先出）从左到右入队
+     */
+    public void levelOrder(){
+        if(root==null){
+            return;
+        }
+        Queue<Node>queue=new LinkedList<>();
+        queue.offer(root);
+        while (!queue.isEmpty()){
+            Node cur=queue.poll();
+            System.out.println(cur.e);
+            if (cur.left!=null){
+                queue.offer(cur.left);
+            }
+            if (cur.right!=null){
+                queue.offer(cur.right);
+            }
         }
     }
 

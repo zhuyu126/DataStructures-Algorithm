@@ -22,5 +22,7 @@ public class Mains {
         bst.postOrder();
         System.out.println();
         bst.postOrderNR();
+        System.out.println();
+        bst.levelOrder();
     }
 }
