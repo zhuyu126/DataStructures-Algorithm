@@ -14,24 +14,24 @@ public class Mains {
             bst.add(random.nextInt(100));
         }
         bst.preOrder();
-//        System.out.println();
-//        bst.preOrderNR();
-//
+        System.out.println();
+        bst.preOrderNR();
+
         System.out.println();
         System.out.println(bst);
-//        System.out.println();
-//        bst.inOrder();
-//        System.out.println();
-//        bst.inOrderNR();
-//        System.out.println();
-//        bst.postOrder();
-//        System.out.println();
-//        bst.postOrderNR();
-//        System.out.println();
-//        bst.levelOrder();
-//        System.out.println(bst.maxmun());
-//        System.out.println(bst.minimum());
-//        bst.removeMin();
-//        System.out.println(bst);
+        System.out.println();
+        bst.inOrder();
+        System.out.println();
+        bst.inOrderNR();
+        System.out.println();
+        bst.postOrder();
+        System.out.println();
+        bst.postOrderNR();
+        System.out.println();
+        bst.levelOrder();
+        System.out.println(bst.maxmun());
+        System.out.println(bst.minimum());
+        bst.removeMin();
+        System.out.println(bst);
     }
 }
