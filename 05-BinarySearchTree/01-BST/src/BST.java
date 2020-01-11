@@ -440,6 +440,7 @@ public class BST<E extends Comparable<E>> {
             /**
              * 如果该节点的左右子树都存在
              * 找到比待删除节点大的最小节点, 即待删除节点右子树的最小节点
+             * 用这个节点顶替待删除节点的位置
              */
             /**
              * 方法一：把待删除节点的右子树的最小节点的值赋值给node.e，然后最小节点为空，再返回node
@@ -448,7 +449,7 @@ public class BST<E extends Comparable<E>> {
             node.right=removeMin(node.right);
             return node;
             /**
-             * 方法二：用这个节点顶替待删除节点的位置
+             * 方法二：类似于"指针操作"
              */
 //            Node rightMin=minimum(node.right);
 //            rightMin.right=removeMin(node.right);
