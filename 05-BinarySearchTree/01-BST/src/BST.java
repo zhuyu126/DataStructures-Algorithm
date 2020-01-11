@@ -17,6 +17,14 @@ import java.util.Stack;
  * 每一颗子树也是二分搜索树
  * 存储元素必须具有可比较性（栈队列链表不具该性质）
  * 二分搜索树不包含重复元素
+ * 二分搜索树具有顺序性
+ *      二分搜索树的floor和ceil
+ *          floor比某元素值小的最大值
+ *          ceil比某元素值大的最小值
+ *      二分搜索树的rank和select
+ *          rank排名
+ *          select
+ *
  */
 public class BST<E extends Comparable<E>> {
     /**
