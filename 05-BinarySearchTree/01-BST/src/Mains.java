@@ -9,10 +9,13 @@ public class Mains {
         Random random=new Random();
         int n=10;
         //int[] nums={5,3,7,9,4,2};
-//        int[] nums={41,22,15,13,33,37,58,50,42,53};
+        //int[] nums={60,40,30,50,80,70,90};
         for(int i=0;i<10;i++){
             bst.add(random.nextInt(100));
         }
+//        for(int n:nums){
+//            bst.add(n);
+//        }
         bst.preOrder();
         System.out.println();
         bst.preOrderNR();
@@ -32,6 +35,8 @@ public class Mains {
         System.out.println(bst.maxmun());
         System.out.println(bst.minimum());
         bst.removeMin();
+        System.out.println(bst);
+        bst.remove(60);
         System.out.println(bst);
     }
 }

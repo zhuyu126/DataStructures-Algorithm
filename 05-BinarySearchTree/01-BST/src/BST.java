@@ -386,6 +386,81 @@ public class BST<E extends Comparable<E>> {
         return node;
     }
 
+    /**
+     * 删除元素为e的节点
+     */
+    public void remove(E e){
+        root=remove(root,e);
+    }
+    private Node remove(Node node,E e){
+        if (node==null){
+            return null;
+        }
+        /**
+         * 删除元素比节点元素小
+         */
+        if (e.compareTo(node.e)<0){
+            node.left=remove(node.left,e);
+            return node;
+        }
+        /**
+         * 删除元素比节点元素大
+         */
+        else if (e.compareTo(node.e)>0){
+            node.right=remove(node.right,e);
+            return node;
+        }
+        /**
+         * 删除元素与节点元素相等
+         */
+        else{
+            /**
+             * 该节点左子树不存在
+             */
+            if(node.left==null){
+                //保留右子树
+                Node right=node.right;
+                //该节点的右子树为null，则说明删除该节点
+                node.right=null;
+                size--;
+                //返回保留的右子树
+                return right;
+            }
+            /**
+             * 如果该节点右子树不存在
+             */
+            if(node.right==null){
+                //保留左子树
+                Node left=node.left;
+                //该节点左子树为null
+                node.left=null;
+                size--;
+                return left;
+            }
+            /**
+             * 如果该节点的左右子树都存在
+             * 找到比待删除节点大的最小节点, 即待删除节点右子树的最小节点
+             */
+            /**
+             * 方法一：把待删除节点的右子树的最小节点的值赋值给node.e，然后最小节点为空，再返回node
+             */
+            node.e=minimum(node.right).e;
+            node.right=removeMin(node.right);
+            return node;
+            /**
+             * 方法二：用这个节点顶替待删除节点的位置
+             */
+//            Node rightMin=minimum(node.right);
+//            rightMin.right=removeMin(node.right);
+//            //在node.right的最小值左侧，又添加了新的节点（子树）
+//            rightMin.left=node.left;
+//            node.left = node.right = null;
+//            return node;
+
+        }
+
+    }
+
 
     /**
      * 打印输出BST
