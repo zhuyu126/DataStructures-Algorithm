@@ -10,6 +10,7 @@ public class Mains {
         int n=10;
         //int[] nums={5,3,7,9,4,2};
         //int[] nums={60,40,30,50,80,70,90};
+        //int[] nums={41,22,15,13,31,27,33};
         for(int i=0;i<10;i++){
             bst.add(random.nextInt(100));
         }
