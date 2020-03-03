@@ -51,4 +51,26 @@ public class MaxHeap<E extends Comparable<E>> {
         return index*2+2;
     }
 
+    /**
+     * 堆元素的添加，使用数组的末尾添加方法，需要注意的是添加进去的元素需要是个堆结构不发生改变
+     * 即需要对添加的元素进行比较使之能够sift up
+     * @param e
+     */
+    public void add(E e){
+        arrays.addLast(e);
+        /**对添加元素进行sift up操作*/
+        siftUp(arrays.getSize()-1);
+    }
+
+    /**
+     *
+     * @param index
+     */
+    private void siftUp(int index){
+        /**该索引需要大于0 并且该元素大于大父亲节点的元素才能执行sift up操作*/
+        while (index>0&&arrays.get(index).compareTo(arrays.get(parent(index)))>0){
+            arrays.swap(index,parent(index));
+            index=parent(index);
+        }
+    }
 }
