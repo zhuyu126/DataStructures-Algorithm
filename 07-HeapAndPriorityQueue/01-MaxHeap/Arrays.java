@@ -12,6 +12,7 @@ public class Arrays<E> {
         size=0;
     }
 
+
     /**
      * 无参数的构造函数，默认数组的容量capacity为10
      */
@@ -19,6 +20,17 @@ public class Arrays<E> {
         this(10);
     }
 
+    /**
+     * 堆化构造函数
+     * @param array 堆化前的数组
+     */
+    public Arrays(E[] array) {
+        data= (E[]) new Object[array.length];
+        for (int i=0;i<array.length-1;i++){
+            data[i]=array[i];
+        }
+        size=array.length;
+    }
     /**
      *获取数组中的元素个数
      * @return 数组中的元素个数
