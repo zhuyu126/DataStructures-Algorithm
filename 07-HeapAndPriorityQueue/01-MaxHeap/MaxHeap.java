@@ -63,8 +63,8 @@ public class MaxHeap<E extends Comparable<E>> {
     }
 
     /**
-     *
-     * @param index
+     *siftUp 操作
+     * @param index siftUp元素的索引
      */
     private void siftUp(int index){
         /**该索引需要大于0 并且该元素大于大父亲节点的元素才能执行sift up操作*/
