@@ -8,6 +8,13 @@ public class MaxHeap<E extends Comparable<E>> {
     public MaxHeap() {
         arrays=new Arrays<>();
     }
+    /** Heapify 操作*/
+    public MaxHeap(E[] array){
+        arrays=new Arrays<>(array);
+        for(int i=parent(array.length-1);i>=0;i--){
+            siftDown(i);
+        }
+    }
 
     /**元素个数*/
     public int size(){
@@ -117,5 +124,18 @@ public class MaxHeap<E extends Comparable<E>> {
                 siftDown(rightChild(index));
             }
         }
+    }
+
+    /**
+     * repalce操作又有两种方式一种是先取值再替换其复杂度为2O(log n)
+     * 另一种方式为堆定替换之后SiftDown 复杂度为O(log n)
+     * @param e 替换元素
+     * @return 被替换的元素
+     */
+    public E replace(E e){
+        E ret=findMax();
+        arrays.set(0,e);
+        siftDown(0);
+        return ret;
     }
 }
