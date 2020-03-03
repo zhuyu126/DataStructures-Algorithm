@@ -173,6 +173,15 @@ public class Arrays<E> {
             remove(index);
         }
     }
+    /**数组元素交换操作*/
+    public void swap(int i,int j){
+        if (i<0||i>=size||j<0||j>=size){
+            throw new IllegalArgumentException("index is illegal.");
+        }
+        E e=data[i];
+        data[i]=data[j];
+        data[j]=e;
+    }
     @Override
     public String toString(){
         StringBuilder res=new StringBuilder();
