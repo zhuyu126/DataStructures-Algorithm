@@ -107,22 +107,20 @@ public class MaxHeap<E extends Comparable<E>> {
     }
 
     /**
-     * SiftDown 操作
+     * 递归实现SiftDown 操作
      * @param index SiftDown元素的索引
      */
     private void siftDown(int index){
-        if(leftChild(index)>arrays.getSize()){
+        if(index>arrays.getSize()-1||leftChild(index)>arrays.getSize()-1){
             return;
-        }else if (rightChild(index)>arrays.getSize()){
-            return;
-        }else {
-            if (arrays.get(leftChild(index)).compareTo(arrays.get(index))>=0){
-                arrays.swap(leftChild(index),index);
-                siftDown(leftChild(index));
-            }else if (arrays.get(rightChild(index)).compareTo(arrays.get(index))>=0){
-                arrays.swap(rightChild(index),index);
-                siftDown(rightChild(index));
-            }
+        }
+        int compareIndex=leftChild(index);
+        if (compareIndex+1<arrays.getSize()&&arrays.get(compareIndex+1).compareTo(arrays.get(compareIndex))>0){
+            compareIndex=rightChild(index);
+        }
+        if (arrays.get(compareIndex).compareTo(arrays.get(index))>0){
+            arrays.swap(compareIndex,index);
+            siftDown(compareIndex);
         }
     }
 
