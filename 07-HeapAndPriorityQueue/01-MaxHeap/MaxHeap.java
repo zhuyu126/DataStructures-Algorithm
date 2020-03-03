@@ -73,4 +73,49 @@ public class MaxHeap<E extends Comparable<E>> {
             index=parent(index);
         }
     }
+
+    /**
+     * 查找堆中最大元素
+     * @return 最大元素值
+     */
+    public E findMax(){
+        if (arrays.getSize()==0){
+            throw new IllegalArgumentException("Can not findMax when heap is empty.");
+        }
+        return arrays.get(0);
+    }
+
+    /**
+     * 取出最大元素
+     * 将堆的收尾元素进行交换之后删除尾元素，因为此时取出前的尾元素位于堆首，为了不改变堆的性质
+     * 需要对此时的堆首元素进行SiftDown操作
+     * @return 最大元素值
+     */
+    public E extractMax(){
+        E ret=findMax();
+        arrays.swap(0,arrays.getSize()-1);
+        arrays.removeLast();
+        siftDown(0);
+        return ret;
+    }
+
+    /**
+     * SiftDown 操作
+     * @param index SiftDown元素的索引
+     */
+    private void siftDown(int index){
+        if(leftChild(index)>arrays.getSize()){
+            return;
+        }else if (rightChild(index)>arrays.getSize()){
+            return;
+        }else {
+            if (arrays.get(leftChild(index)).compareTo(arrays.get(index))>=0){
+                arrays.swap(leftChild(index),index);
+                siftDown(leftChild(index));
+            }else if (arrays.get(rightChild(index)).compareTo(arrays.get(index))>=0){
+                arrays.swap(rightChild(index),index);
+                siftDown(rightChild(index));
+            }
+        }
+    }
 }
