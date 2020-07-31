@@ -1,3 +1,5 @@
+# 20. Valid Parentheses
+**Stack栈解决**
 成功
 显示详情 
 执行用时:4 ms,在Valid Parentheses的Java提交中击败了100.00%的用户
