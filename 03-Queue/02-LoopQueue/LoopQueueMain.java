@@ -1,3 +1,7 @@
+/**
+ * LoopQueue test
+ * @author robinson
+ */
 public class LoopQueueMain {
     public static void main(String[] args) {
         LoopQueue<Integer> queue=new LoopQueue<>();
