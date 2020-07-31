@@ -19,11 +19,11 @@ public class QueuesComparison {
     public static void main(String[] args) {
         int opCount=100000;//操作数量
         ArrayQueue<Integer>arrayQueue=new ArrayQueue<>();
-        double time1=testQueue(arrayQueue,opCount);
-        System.out.println("ArrayQueue time:"+time1+"s");//主要的耗时部分是数组队列出队对数组执行的删除操作
+        double time1=testQueue(arrayQueue,opCount);//test 方法中总时间复杂度为O(n2)
+        System.out.println("ArrayQueue time:"+time1+"s");//主要的耗时部分是数组队列出队对数组执行的删除操作 LoopQueun为O(1) ArrayQueue为O(n)
 
         LoopQueue<Integer>loopQueue=new LoopQueue<>();
-        double time2=testQueue(loopQueue,opCount);
+        double time2=testQueue(loopQueue,opCount);//test 方法中总时间复杂度为O(n)
         System.out.println("LoopQueue time:"+time2+"s");
     }
 }
