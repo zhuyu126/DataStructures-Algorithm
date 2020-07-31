@@ -77,14 +77,15 @@ public class LoopQueueWithoutWastingOneCapacitySpace<E> implements Queue<E> {
     }
     @Override
     public String toString() {
-        StringBuilder res=new StringBuilder();
-        res.append(String.format("Queue size=%d,capacity=%d\n",size,getCapacity()));
-        res.append("front[");
-        for(int i=front;i!=tail;i=(i+1)%data.length){
-            res.append(data[i]);
-            if((i+1)%data.length!=tail){
+        StringBuilder res = new StringBuilder();
+        res.append(String.format("Queue: size = %d , capacity = %d\n", size, getCapacity()));
+        res.append("front [");
+
+        // 注意，我们的循环遍历打印队列的逻辑也有相应的更改 :-)
+        for(int i = 0; i < size; i ++){
+            res.append(data[(front + i) % data.length]);
+            if((i + front + 1) % data.length != tail)
                 res.append(", ");
-            }
         }
         res.append("] tail");
         return res.toString();
