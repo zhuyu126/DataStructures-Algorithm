@@ -2,7 +2,7 @@ package InversePairsArrayJZOffer51;
 /**
  * 剑指Offer
  * https://leetcode-cn.com/problems/shu-zu-zhong-de-ni-xu-dui-lcof/
- * 归并排序求解，归并操作的次数即为数组逆序数对的总数
+ * 归并排序求解，右区间归并的数据中与左区间数据未归并数据个数形成逆序数对
  * @author robinson
  */
 
