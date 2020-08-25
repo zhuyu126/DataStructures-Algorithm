@@ -9,9 +9,10 @@ public class Main {
         System.out.println(Ceil.upper_ceil(data,14));
         Integer[] arr = {1, 1, 3, 3, 5, 5};
         for(int i = 0; i <= 6; i ++) {
-//            System.out.print(Upper.upper(arr, i) + " ");
-//            System.out.print(Ceil.upper_ceil(arr,i)+" ");
+            System.out.print(Upper.upper(arr, i) + " ");
+            System.out.print(Ceil.upper_ceil(arr,i)+" ");
             System.out.print(Ceil.lower_ceil(arr,i)+" ");
+            System.out.print(Lower.lower(arr,i)+" ");
         }
         System.out.println();
     }
