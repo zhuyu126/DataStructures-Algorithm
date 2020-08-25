@@ -6,9 +6,11 @@ public class Main {
         System.out.println(res);
         System.out.println(res2);
         System.out.println(Upper.upper(data,13));
+        System.out.println(Ceil.ceil(data,14));
         Integer[] arr = {1, 1, 3, 3, 5, 5};
         for(int i = 0; i <= 6; i ++) {
             System.out.print(Upper.upper(arr, i) + " ");
+            System.out.print(Ceil.ceil(arr,i)+" ");
         }
         System.out.println();
     }
