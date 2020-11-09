@@ -1,8 +1,8 @@
-public class SegmentTree<E> {
+public class SegmentTreeBasic<E> {
     private E[] tree;
     private E[] data;
 
-    public SegmentTree(E[] array) {
+    public SegmentTreeBasic(E[] array) {
         this.data = (E[]) new Object[array.length];
         for (int i=0;i<array.length;i++){
             data[i]=array[i];
