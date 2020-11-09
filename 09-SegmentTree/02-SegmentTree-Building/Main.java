@@ -7,6 +7,10 @@ public class Main {
                 return a+b;
             }
         });
-        System.out.println(segmentTree);
+//        System.out.println(segmentTree);
+        System.out.println(segmentTree.query(0,5));
+        System.out.println(segmentTree.query(0,2));
+        System.out.println(segmentTree.query(3,5));
+        System.out.println(segmentTree.query(2,5));
     }
 }

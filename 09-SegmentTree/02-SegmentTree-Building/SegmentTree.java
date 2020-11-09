@@ -34,6 +34,48 @@ public class SegmentTree<E> {
         tree[treeIndex]=merger.merger(tree[leftTreeIndex],tree[rightTreeIndex]);
     }
 
+    /**
+     * 返回区间[queryL, queryR]的值
+     * @param queryL 查询左区间的起始
+     * @param queryR 查询右区间的终止
+     * @return 查询的结果值
+     */
+    public E query(int queryL,int queryR){
+        if (queryL < 0 || queryL >= data.length || queryR < 0 || queryR >= data.length || queryL > queryR){
+            throw new IllegalArgumentException("Query range is illegal.");
+        }
+        return query(0,0,data.length-1,queryL,queryR);
+    }
+
+    /**
+     * 在以treeIndex为根的线段树中[l...r]的范围里，搜索区间[queryL...queryR]的值
+     * @param treeIndex 查询线段树的根
+     * @param l 线段树的左区间起始
+     * @param r 线段树的右区间终止
+     * @param queryL 查询的左区间起始
+     * @param queryR 查询的右区间终止
+     * @return 查询结果值
+     */
+    private E query(int treeIndex, int l, int r, int queryL, int queryR) {
+        if (l==queryL && r==queryR){
+            return tree[treeIndex];
+        }
+        int mid=l+(r-l)/2;
+
+        int leftTreeIndex=leftChild(treeIndex);
+        int rightTreeIndex=rightChild(treeIndex);
+
+        if (queryL>=mid+1){
+            return query(rightTreeIndex,mid+1,r,queryL,queryR);
+        }else if(queryR <= mid){
+            return query(leftTreeIndex,l,mid,queryL,queryR);
+        }else {
+            E leftResult = query(leftTreeIndex, l, mid, queryL, mid);
+            E rightResult = query(rightTreeIndex, mid + 1, r, mid + 1, queryR);
+            return merger.merger(leftResult,rightResult);
+        }
+    }
+
     public int getSize(){
         return data.length;
     }
