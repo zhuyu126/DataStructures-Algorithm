@@ -32,6 +32,22 @@ public class Main {
             time = (endTime - startTime) / 1000000000.0;
             System.out.println("Total different words: " + trie.getSize());
             System.out.println("Trie: " + time + " s");
+
+
+            System.out.println("--------");
+
+            startTime = System.nanoTime();
+            TrieR trieR=new TrieR();
+            for(String word:words){
+                trieR.addR(word);
+            }
+            for (String word:words){
+                trieR.containsR(word);
+            }
+            endTime = System.nanoTime();
+            time = (endTime - startTime) / 1000000000.0;
+            System.out.println("Total different words: " + trieR.getSize());
+            System.out.println("TrieR: " + time + " s");
         }
     }
 }
