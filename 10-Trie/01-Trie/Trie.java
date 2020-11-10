@@ -49,5 +49,20 @@ public class Trie {
         }
     }
 
-
+    /**
+     * 查询单词word是否在Trie中 非递归实现
+     * @param word 查询的单词
+     * @return 是否存在
+     */
+    public boolean contains(String word){
+        Node cur=root;
+        for (int i=0;i<word.length();i++){
+            char c=word.charAt(i);
+            if (cur.next.get(c)==null){
+                return false;
+            }
+            cur=cur.next.get(c);
+        }
+        return cur.isWord;
+    }
 }
