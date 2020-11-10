@@ -86,4 +86,32 @@ public class TrieR {
             return containsR(node.next.get(c),word,index+1);
         }
     }
+    /**
+     *  查询是否在Trie中有单词以prefix为前缀 递归接口
+     * @param prefix 前缀单词
+     * @return 是否存在
+     */
+    public boolean isPrefixR(String prefix){
+        Node cur=root;
+        return containsR(root,prefix,0);
+    }
+
+    /**
+     * 查询是否在Trie中有单词以prefix为前缀 递归实现
+     * @param node 查询节点
+     * @param prefix 前缀单词
+     * @param index 查询单词索引
+     * @return 是否存在
+     */
+    private boolean isPrefixR(Node node, String prefix, int index) {
+        if (index==prefix.length()){
+            return true;
+        }
+        char c=prefix.charAt(index);
+        if (node.next.get(c)==null){
+            return false;
+        }else {
+            return containsR(node.next.get(c),prefix,index+1);
+        }
+    }
 }
