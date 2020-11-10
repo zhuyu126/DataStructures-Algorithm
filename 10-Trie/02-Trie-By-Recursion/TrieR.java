@@ -57,4 +57,20 @@ public class TrieR {
             addR(node.next.get(c),word,index+1);
         }
     }
+    public boolean containsR(String word){
+        Node cur=root;
+        return containsR(root,word,0);
+    }
+
+    private boolean containsR(Node node, String word, int index) {
+        if (index==word.length()){
+            return node.isWord;
+        }
+        char c=word.charAt(index);
+        if (node.next.get(c)==null){
+            return false;
+        }else {
+            return containsR(node.next.get(c),word,index+1);
+        }
+    }
 }
