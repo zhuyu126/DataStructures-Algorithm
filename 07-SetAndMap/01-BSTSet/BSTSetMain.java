@@ -4,7 +4,7 @@ public class BSTSetMain {
     public static void main(String[] args) {
         System.out.println("Pride and Prejudice");
         ArrayList<String>words1=new ArrayList<>();
-        if (FileOperation.readFile( "/Users/robinson/IdeaProjects/Data-Structures/06-SetAndMap/pride-and-prejudice.txt",words1)){
+        if (FileOperation.readFile( "07-SetAndMap/pride-and-prejudice.txt",words1)){
             System.out.println("Total words: " + words1.size());
             BSTSet<String>set1=new BSTSet<>();
             for(String word:words1){
