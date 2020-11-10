@@ -57,11 +57,24 @@ public class TrieR {
             addR(node.next.get(c),word,index+1);
         }
     }
+
+    /**
+     *  查询单词word是否在Trie中 递归接口
+     * @param word 查询单词
+     * @return 是否存在
+     */
     public boolean containsR(String word){
         Node cur=root;
         return containsR(root,word,0);
     }
 
+    /**
+     * 查询单词word是否在Trie中 递归实现
+     * @param node 查询节点
+     * @param word 查询单词
+     * @param index 查询单词索引
+     * @return 是否存在
+     */
     private boolean containsR(Node node, String word, int index) {
         if (index==word.length()){
             return node.isWord;
