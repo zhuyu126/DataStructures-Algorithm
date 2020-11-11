@@ -1,8 +1,7 @@
 /**
- * 第一版Union-Find
+ * 第一版Union-Find,本质就是一个数组
  */
 public class QuickFind implements UF {
-    //第一版Union-Find本质就是一个数组
     private int[] id;
 
     public QuickFind(int size) {
