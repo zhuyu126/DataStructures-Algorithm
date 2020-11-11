@@ -66,7 +66,7 @@ public class UnionFindBySize implements UF {
         if (sz[pRoot]<sz[qRoot]){
             parent[pRoot]=qRoot;
             sz[qRoot]+=sz[pRoot];
-        }else {
+        }else {// sz[qRoot] <= sz[pRoot]
             parent[qRoot]=pRoot;
             sz[pRoot]+=sz[qRoot];
         }
