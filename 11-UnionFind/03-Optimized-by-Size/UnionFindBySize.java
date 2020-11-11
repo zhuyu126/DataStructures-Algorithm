@@ -1,3 +1,6 @@
+/**
+ * 第三版UnionFind基于QuickUnion对树的深度size进行优化
+ */
 public class UnionFindBySize implements UF {
     //parent[i]表示第一个元素所指向的父节点
     private int[] parent;

@@ -30,6 +30,7 @@ public class Main {
         System.out.println("QuickFind : " + testUF(quickFind, m) + " s");
         QuickUnion quickUnion=new QuickUnion(size);
         System.out.println("QuickUnion : " + testUF(quickUnion, m) + " s");
-
+        UnionFindBySize unionFindBySize=new UnionFindBySize(size);
+        System.out.println("UnionFindBySize : " + testUF(unionFindBySize, m) + " s");
     }
 }
