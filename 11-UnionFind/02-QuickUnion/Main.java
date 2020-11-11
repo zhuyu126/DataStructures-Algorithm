@@ -19,7 +19,6 @@ public class Main {
         return (endTime-startTime)/1000000000.0;
     }
     public static void main(String[] args) {
-
         //QuickFind 慢于 QuickUnion
 //        int size=100000;
 //        int m=10000;
