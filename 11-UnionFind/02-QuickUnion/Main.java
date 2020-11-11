@@ -35,5 +35,7 @@ public class Main {
         System.out.println("UnionFindByRank : " + testUF(unionFindByRank, m) + " s");
         UnionFindByPath unionFindByPath=new UnionFindByPath(size);
         System.out.println("UnionFindByPath : " + testUF(unionFindByPath, m) + " s");
+        UnionFindByPathR unionFindByPathR=new UnionFindByPathR(size);
+        System.out.println("UnionFindByPathR : " + testUF(unionFindByPathR, m) + " s");
     }
 }
