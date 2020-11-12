@@ -84,7 +84,10 @@ public class AVLTree<K extends Comparable<K>,V>{
 //        if (Math.abs(balanceFactor)>1){
 //            System.out.println("unbalanced,The balanceFactor is:"+balanceFactor);
 //        }
-        //维护平衡
+
+        /**
+         * 维护平衡
+         */
         //LL
         if (balanceFactor>1&&getBalanceFactor(node.left)>=0){
             return rightRotate(node);
