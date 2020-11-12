@@ -93,6 +93,11 @@ public class BSTMap<K extends Comparable<K>,V> implements Map<K,V> {
 
     @Override
     public V remove(K key) {
+        Node node = getNode(root, key);
+        if(node != null){
+            root = remove(root, key);
+            return node.value;
+        }
         return null;
     }
 
