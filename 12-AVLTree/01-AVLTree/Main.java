@@ -9,7 +9,7 @@ public class Main {
         if(FileOperation.readFile("12-AVLTree/pride-and-prejudice.txt", words)) {
             System.out.println("Total words: " + words.size());
 
-            Collections.sort(words);
+//            Collections.sort(words);
 
             //test BST
             long startTime = System.nanoTime();
@@ -29,6 +29,7 @@ public class Main {
             double time = (endTime - startTime) / 1000000000.0;
             System.out.println("BST: " + time + " s");
 
+            System.out.println("------------");
             //test AVL
             startTime = System.nanoTime();
             AVLTree<String, Integer> avl = new AVLTree<>();
@@ -47,11 +48,17 @@ public class Main {
             time = (endTime - startTime) / 1000000000.0;
             System.out.println("AVL: " + time + " s");
 
-//            System.out.println("Total different words: " + map.getSize());
-//            System.out.println("Frequency of PRIDE: " + map.get("pride"));
-//            System.out.println("Frequency of PREJUDICE: " + map.get("prejudice"));
-//            System.out.println("is BST : " + map.isBST());
-//            System.out.println("is Balanced : " + map.isBalanced());
+            System.out.println("Total different words: " + avl.getSize());
+            System.out.println("Frequency of PRIDE: " + avl.get("pride"));
+            System.out.println("Frequency of PREJUDICE: " + avl.get("prejudice"));
+            System.out.println("is BST : " + avl.isBST());
+            System.out.println("is Balanced : " + avl.isBalanced());
+            for(String word: words){
+                avl.remove(word);
+                if(!avl.isBST() || !avl.isBalanced()) {
+                    throw new RuntimeException();
+                }
+            }
         }
 
         System.out.println();

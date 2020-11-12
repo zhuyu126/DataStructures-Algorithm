@@ -181,24 +181,24 @@ public class AVLTree<K extends Comparable<K>,V>{
         }
         return minimum(node.left);
     }
-    /**
-     * 删除掉以node为根的二分搜索树中的最小节点
-     * @param node 开始节点
-     * @return 返回删除节点后新的二分搜索树的根
-     */
-    private Node removeMin(Node node) {
-        if (node.left==null){
-            //保留右子树
-            Node rightNode=node.right;
-            //该节点的右子树为null，则说明删除该节点
-            node.right=null;
-            size--;
-            //返回保留的右子树
-            return rightNode;
-        }
-        node.left=removeMin(node.left);
-        return node;
-    }
+//    /**
+//     * 删除掉以node为根的二分搜索树中的最小节点
+//     * @param node 开始节点
+//     * @return 返回删除节点后新的二分搜索树的根
+//     */
+//    private Node removeMin(Node node) {
+//        if (node.left==null){
+//            //保留右子树
+//            Node rightNode=node.right;
+//            //该节点的右子树为null，则说明删除该节点
+//            node.right=null;
+//            size--;
+//            //返回保留的右子树
+//            return rightNode;
+//        }
+//        node.left=removeMin(node.left);
+//        return node;
+//    }
 
     /**
      * 从二分搜索树中删除键为key的节点
@@ -218,24 +218,27 @@ public class AVLTree<K extends Comparable<K>,V>{
         if (node == null) {
             return null;
         }
+        Node reNode;
         /**
          * 删除元素比节点元素小
          */
         if (key.compareTo( node.key ) < 0) {
             node.left = remove( node.left, key );
-            return node;
+            reNode=node;
+//            return node;
         }
         /**
          * 删除元素比节点元素大
          */
         else if (key.compareTo( node.key ) > 0) {
             node.right = remove( node.right, key );
-            return node;
+            reNode=node;
+//            return node;
         }
         /**
          * 删除元素与节点元素相等
          */
-        else {
+        else {// key.compareTo(node.key) == 0
             /**
              * 该节点左子树不存在
              */
@@ -246,38 +249,74 @@ public class AVLTree<K extends Comparable<K>,V>{
                 node.right = null;
                 size--;
                 //返回保留的右子树
-                return right;
+                reNode=right;
+//                return right;
             }
             /**
              * 如果该节点右子树不存在
              */
-            if (node.right == null) {
+            else if (node.right == null) {
                 //保留左子树
                 Node left = node.left;
                 //该节点左子树为null
                 node.left = null;
                 size--;
-                return left;
-            }
-            /**
-             * 如果该节点的左右子树都存在
-             * 找到比待删除节点大的最小节点, 即待删除节点右子树的最小节点
-             * 用这个节点顶替待删除节点的位置
-             */
-            Node successor = minimum(node.right);
-            successor.right = removeMin(node.right);
-            successor.left = node.left;
+                reNode=left;
+//                return left;
+            }else {
+                /**
+                 * 如果该节点的左右子树都存在
+                 * 找到比待删除节点大的最小节点, 即待删除节点右子树的最小节点
+                 * 用这个节点顶替待删除节点的位置
+                 */
+                Node successor = minimum(node.right);
+                successor.right = remove(node.right,successor.key);
+                successor.left = node.left;
 
-            node.left = node.right = null;
+                node.left = node.right = null;
 
-            return successor;
-            /**
-             * 方法二：把待删除节点的右子树的最小节点的值赋值给node.e，然后最小节点为空，再返回node
-             */
+//            return successor;
+                reNode=successor;
+                /**
+                 * 方法二：把待删除节点的右子树的最小节点的值赋值给node.e，然后最小节点为空，再返回node
+                 */
 //            node.key = minimum( node.right ).key;
 //            node.right = removeMin( node.right );
 //            return node;
+            }
         }
+        if (reNode==null){
+            return null;
+        }
+        // 更新height
+        reNode.height = 1 + Math.max(getHeight(reNode.left), getHeight(reNode.right));
+        // 计算平衡因子
+        int balanceFactor = getBalanceFactor(reNode);
+
+        // 平衡维护
+        // LL
+        if (balanceFactor > 1 && getBalanceFactor(reNode.left) >= 0) {
+            return rightRotate(reNode);
+        }
+
+        // RR
+        if (balanceFactor < -1 && getBalanceFactor(reNode.right) <= 0) {
+            return leftRotate(reNode);
+        }
+
+        // LR
+        if (balanceFactor > 1 && getBalanceFactor(reNode.left) < 0) {
+            reNode.left = leftRotate(reNode.left);
+            return rightRotate(reNode);
+        }
+
+        // RL
+        if (balanceFactor < -1 && getBalanceFactor(reNode.right) > 0) {
+            reNode.right = rightRotate(reNode.right);
+            return leftRotate(reNode);
+        }
+
+        return reNode;
     }
 
     private Node getNode(Node node,K key){
