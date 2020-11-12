@@ -20,6 +20,8 @@ public class Main {
             System.out.println("Total different words: " + map.getSize());
             System.out.println("Frequency of PRIDE: " + map.get("pride"));
             System.out.println("Frequency of PREJUDICE: " + map.get("prejudice"));
+            System.out.println("is BST : " + map.isBST());
+            System.out.println("is Balanced : " + map.isBalanced());
         }
 
         System.out.println();

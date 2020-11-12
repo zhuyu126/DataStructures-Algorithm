@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * 基于映射实现的BST实现AVLTree
  * @param <K>
@@ -242,5 +244,59 @@ public class AVLTree<K extends Comparable<K>,V>{
 
     public boolean isEmpty() {
         return size==0;
+    }
+
+    /**
+     * 判断该树是不是BST二分搜索树
+     * 二分搜索树 中序遍历升序排列
+     * @return
+     */
+    public boolean isBST(){
+        ArrayList<K> keys=new ArrayList<>();
+        inOrder(root,keys);
+        for (int i=1;i<keys.size();i++){
+            if (keys.get(i-1).compareTo(keys.get(i))>0){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * 中序遍历
+     * @param node
+     * @param keys
+     */
+    private void inOrder(Node node, ArrayList<K> keys){
+        if (node==null){
+            return;
+        }
+        inOrder(node.left,keys);
+        keys.add(node.key);
+        inOrder(node.right,keys);
+    }
+
+    /**
+     * 判断该二叉树是否是一棵平衡二叉树
+     * @return
+     */
+    public boolean isBalanced(){
+        return isBalanced(root);
+    }
+
+    /**
+     * 判断以Node为根的二叉树是否是一棵平衡二叉树，递归算法
+     * @param node
+     * @return
+     */
+    private boolean isBalanced(Node node){
+        if (node==null){
+            return true;
+        }
+        int balanceFactor=getBalanceFactor(node);
+        if (Math.abs(balanceFactor)>1){
+            return false;
+        }
+        return isBalanced(node.left)&&isBalanced(node.right);
     }
 }
