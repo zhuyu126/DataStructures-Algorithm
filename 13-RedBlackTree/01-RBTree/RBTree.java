@@ -44,16 +44,50 @@ public class RBTree<K extends Comparable<K>,V> {
         }
         return node.color;
     }
-    //   node                     x
-    //  /   \     左旋转         /  \
-    // T1   x   --------->   node   T3
-    //     / \              /   \
-    //    T2 T3            T1   T2
+
+    /**
+     * 左旋转
+     *        node                     x
+     *       /   \     左旋转         /  \
+     *      T1   x   --------->   node   T3
+     *          / \              /   \
+     *         T2 T3            T1   T2
+     * @param node
+     * @return
+     */
     private Node leftRotate(Node node){
         Node x=node.right;
         //左旋转
         node.right=x.left;
         x.left=node;
+
+        x.color=node.color;
+        node.color=RED;
+        return x;
+    }
+    //颜色翻转
+    private void flipColors(Node node){
+        node.color=RED;
+        node.left.color=BLACK;
+        node.right.color=BLACK;
+    }
+
+
+    /**
+     * 右旋转
+     *          node                   x
+     *         /   \     右旋转       /  \
+     *        x    T2   ------->   y   node
+     *       / \                       /  \
+     *      y  T1                     T1  T2
+     * @param node
+     * @return
+     */
+    private Node rightRotate(Node node){
+        Node x=node.left;
+        //右旋转
+        node.left=x.right;
+        x.right=node;
 
         x.color=node.color;
         node.color=RED;
