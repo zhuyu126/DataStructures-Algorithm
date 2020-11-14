@@ -1,6 +1,9 @@
 import java.util.TreeMap;
 
 public class HashTable<K,V> {
+    private static  final int upperTol=10;
+    private static  final int lowerTol=2;
+    private static  final int initCapacity=7;
     private TreeMap<K,V>[] hashTable;
     private int size;
     //一个合适的素数
@@ -16,7 +19,7 @@ public class HashTable<K,V> {
     }
 
     public HashTable() {
-        this(97);
+        this(initCapacity);
     }
     private int hash(K key){
         //& 0x7fffffff——>去除符号
@@ -36,6 +39,9 @@ public class HashTable<K,V> {
         } else{
             map.put(key, value);
             size ++;
+            if (size>=upperTol*M){
+                resize(2*M);
+            }
         }
 //        不实用暂存空间优化添加操作
 //        if (hashTable[hash(key)].containsKey(key)){
@@ -51,8 +57,27 @@ public class HashTable<K,V> {
         if (map.containsKey(key)){
             ret=map.remove(key);
             size--;
+            if (size<lowerTol*M && M/2>=initCapacity){
+                resize(M/2);
+            }
         }
         return ret;
+    }
+
+    private void resize(int newM) {
+        TreeMap<K, V>[] newHashTable = new TreeMap[newM];
+        for (int i=0;i<newM;i++){
+            newHashTable[i]=new TreeMap<>();
+        }
+        int oldM=M;
+        this.M=newM;
+        for (int i=0;i<oldM;i++){
+            TreeMap<K, V> map = hashTable[i];
+            for (K key:map.keySet()){
+                newHashTable[hash(key)].put(key,map.get(key));
+            }
+        }
+        this.hashTable=newHashTable;
     }
 
     public void set(K key,V value){
