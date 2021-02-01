@@ -42,4 +42,14 @@ public class SQRTNumArray {
         }
         return res;
     }
+
+    public void update(int i,int value){
+        if (i<0||i>=N){
+            return;
+        }
+        int b=i/B;
+        blocks[b]-=data[i];
+        blocks[b]+=value;
+        data[i]=value;
+    }
 }
