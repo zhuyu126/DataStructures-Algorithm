@@ -1,16 +1,18 @@
 public class RabinKarpSubstringSearch {
     private RabinKarpSubstringSearch(){}
-    public static int RabinKarp(String s,String t){
+    public static int rabinKarp(String s,String t){
         if (s.length()<t.length()){
             return -1;
         }
         if (t.length()==0){
             return -1;
         }
+        //t的hash值
         long thash=0,MOD=(long)1e9+7,B=256;
         for (int i=0;i<t.length();i++){
             thash=(t.charAt(i)+thash*B)%MOD;
         }
+        //P为进制数
         long hash=0,P=1;
         for (int i=0;i<t.length()-1;i++){
             P=P*B%MOD;
