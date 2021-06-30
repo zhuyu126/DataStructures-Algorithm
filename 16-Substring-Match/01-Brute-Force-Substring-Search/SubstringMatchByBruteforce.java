@@ -14,7 +14,8 @@ public class SubstringMatchByBruteforce {
             return -1;
         }
         /**
-         *s[i, i + t.length - 1]
+         * 源字符串区间
+         * s[i, i + t.length - 1]
          */
         for(int i=0;i+t.length()-1<s.length();i++){
             int j=0;
