@@ -65,7 +65,9 @@ public class FileOperation {
         if(readFile(filename, list)){
 
             StringBuilder sb = new StringBuilder();
-            for(String word: list) sb.append(word + " ");
+            for(String word: list) {
+                sb.append(word + " ");
+            }
             return sb.toString();
         }
 

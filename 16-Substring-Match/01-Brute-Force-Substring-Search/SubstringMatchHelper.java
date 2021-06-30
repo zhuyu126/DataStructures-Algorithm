@@ -13,9 +13,8 @@ public class SubstringMatchHelper {
 
         double time = (endTime - startTime) / 1000000000.0;
 
-        if(s.indexOf(t) != pos) {
+        if(pos != -1 && !s.substring(pos, pos + t.length()).equals(t))
             throw new RuntimeException(name + " failed");
-        }
         System.out.println(String.format("%s : res = %d, time = %f s", name, pos, time));
     }
 
