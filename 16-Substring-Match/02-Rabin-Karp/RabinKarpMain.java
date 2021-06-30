@@ -1,7 +1,7 @@
 public class RabinKarpMain {
     public static void main(String[] args) {
-        String s1 = "hello, this is liuyubobobo.";
-        String t1 = "bo";
+        String s1 = "hello, this is liuyu.";
+        String t1 = "yu";
         SubstringMatchHelper.matchTest("bruteforce", s1, t1);
         SubstringMatchHelper.matchTest("rk", s1, t1);
 
